@@ -18,6 +18,7 @@ This project provides a simple method to install Debian and run Android Studio o
 - Android device (preferably with 4GB+ RAM)
 - Installed Termux (from [F-Droid](https://f-droid.org/en/packages/com.termux/))
 - Stable Internet connection
+- Installed VNC (from [Play-Store](https://play.google.com/store/apps/details?id=com.realvnc.viewer.android/))
 - 6-10 GB of free storage
 - Patience 😄
 
@@ -25,8 +26,17 @@ This project provides a simple method to install Debian and run Android Studio o
 
 ## ⚙️ Termux Setup Commands
 
+
+
+
+
+
 Run these commands one by one in your Termux terminal:
 
+
+
+
+----
 
 
 ```bash
@@ -49,7 +59,7 @@ pkg install wget proot-distro git -y
 
 
 
-## 📥 Download and Run Setup Script
+##  📥 Download and Run Setup Script
 
 
 
