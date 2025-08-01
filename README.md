@@ -8,6 +8,7 @@
 **Author:** [SoloFFcreator](https://github.com/SoloFFcreator)  
 **Repository:** `debain-and-android-studio-on-termux`  
 **License:** MIT
+**Contact:** [Contact Email](infosoloaihub@gmail.com)
 
 This project provides a simple method to install Debian and run Android Studio on Termux (Android). It includes necessary setup scripts and instructions for VNC access.
 
@@ -205,17 +206,6 @@ Inspired by various open-source Linux-on-Android tutorials.
 
 
 
-
-
-
-
-
-
-
----
-
-
-## If you find any error just contact in this Email infosoloaihub@gmail.com
 
 
 bye 😎 take care 
