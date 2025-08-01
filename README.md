@@ -1,147 +1,104 @@
-# 📱 debain-and-android-studio-on-termux
 
-> Install **Debian Linux**, **LXDE GUI**, and **Android Studio** inside **Termux** (no root needed) using a simple setup script.
 
----
-
-## 💡 What's This?
-
-This project lets you run **Android Studio** on your Android device using **Termux + proot-distro + VNC Viewer**. It sets up a full Debian environment with LXDE desktop and installs Android Studio (2025.1.1.21).
 
 ---
 
-## 📥 Download and Run the Script
+# Debian and Android Studio on Termux
 
-### 1. Open Termux and update:
+**Author:** [SoloFFcreator](https://github.com/SoloFFcreator)  
+**Repository:** `debain-and-android-studio-on-termux`  
+**License:** MIT
 
-pkg update && pkg upgrade -y pkg install git curl -y
-
-### 2. Clone this repository:
-
-git clone https://github.com/SoloFFcreator/debain-and-android-studio-on-termux.git cd debain-and-android-studio-on-termux
-
-### 3. Make the installer executable:
-
-chmod +x install-android-studio-termux.sh
-
-### 4. Run the installer:
-
-bash install-android-studio-termux.sh
+This project provides a simple method to install Debian and run Android Studio on Termux (Android). It includes necessary setup scripts and instructions for VNC access.
 
 ---
 
-## 🚀 How to Start Android Studio
+## 📦 Requirements
 
-After the script finishes:
-
-Inside Termux:
-
-proot-distro login debian vncserver :1 export DISPLAY=:1 /opt/android-studio/bin/studio.sh
-
-OR just use the helper script below.
+- Android device (preferably with 4GB+ RAM)
+- Installed Termux (from [F-Droid](https://f-droid.org/en/packages/com.termux/))
+- Stable Internet connection
+- 6-10 GB of free storage
+- Patience 😄
 
 ---
 
-## ⚡ startstudio.sh (Optional Helper Script)
+## ⚙️ Termux Setup Commands
 
-To launch Android Studio quickly from inside Debian:
-
-#!/bin/bash export DISPLAY=:1 vncserver :1 /opt/android-studio/bin/studio.sh
-
-Save this as `/root/startstudio.sh` inside Debian:
-
-chmod +x /root/startstudio.sh ./startstudio.sh
-
----
-
-## 📋 Requirements
-
-- Android 8.0 or higher
-- Termux (from F-Droid)
-- 4–6 GB RAM recommended
-- At least 5 GB free internal storage
-- VNC Viewer app (for desktop GUI)
-
----
-
-## 📺 How to View the GUI on Android
-
-1. Open VNC Viewer app
-2. Connect to `127.0.0.1:5901`
-3. Enter password (set during first run of `vncserver`)
-4. You’ll see Debian desktop with LXDE GUI
-5. Launch Android Studio via terminal
-
----
-
-## 🛠️ install-android-studio-termux.sh (Main Script)
+Run these commands one by one in your Termux terminal:
 
 ```bash
-#!/data/data/com.termux/files/usr/bin/bash
+pkg update && pkg upgrade -y
+pkg install wget proot-distro git -y
 
-# debain-and-android-studio-on-termux
-# Author: Solo FF | GitHub: https://github.com/SoloFFcreator/debain-and-android-studio-on-termux
 
-# Step One: Install Debian in Termux
-pkg update -y && pkg upgrade -y
-pkg install proot-distro wget curl git -y
+---
 
-proot-distro install debian
+📥 Download and Run Setup Script
 
-# Step Two: Setup Debian Environment
-cat << 'EOF' > ~/debian-setup.sh
-#!/bin/bash
+Clone this repository and execute the setup:
 
-# Step Three: Install GUI and Android Studio in Debian
-apt update && apt upgrade -y
-apt install -y openjdk-17-jdk lxde tightvncserver wget curl git unzip sudo
+git clone https://github.com/SoloFFcreator/debain-and-android-studio-on-termux.git
+cd debain-and-android-studio-on-termux
+chmod +x startstudio.sh convert.sh
+./startstudio.sh
 
-dpkg --add-architecture i386
-apt update
-apt install -y lib32z1 libbz2-1.0:i386 libncurses5:i386 libc6:i386 libstdc++6:i386
 
+---
+
+🧰 Files in This Repo
+
+startstudio.sh – Script to set up and launch Android Studio in Debian
+
+convert.sh – Optional helper script for additional setup or tweaks
+
+README.md – You're reading it now!
+
+
+
+---
+
+🖥️ Start Android Studio
+
+Once Debian is installed:
+
+proot-distro login debian
 cd /root
-wget https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2025.1.1.21/android-studio-2025.1.1.21-linux.tar.gz
-tar -xzf android-studio-*.tar.gz
-mv android-studio /opt/
+./startstudio.sh
 
-# Step Four: Configure VNC
-echo 'export DISPLAY=:1' >> ~/.bashrc
-echo 'vncserver :1' >> ~/.bashrc
+Access GUI with VNC Viewer:
 
-echo "✅ Setup Complete!"
-EOF
+Install any VNC Viewer from Play Store (like RealVNC)
 
-chmod +x ~/debian-setup.sh
-proot-distro login debian -- bash /host-rootfs/data/data/com.termux/files/home/debian-setup.sh
+Connect to: localhost:1 or 127.0.0.1:5901
 
-echo "🎉 Debian and Android Studio are ready!"
-echo "👉 Start with: proot-distro login debian"
-echo "👉 Then: vncserver :1"
-echo "👉 Then: /opt/android-studio/bin/studio.sh"
+Password: (what you set during VNC install)
+
 
 
 ---
 
-👨‍💻 Author
+📌 Notes
 
-Solo FF
-🔗 GitHub: SoloFFcreator
-📅 Released: August 2025
+If Android Studio fails to launch, try running ./convert.sh inside Debian.
+
+First boot might take a few minutes.
+
 
 
 ---
 
-⚖️ License
+📄 License
 
-MIT License
+This project is licensed under the MIT License. See LICENSE for details.
 
-Copyright (c) 2025 Solo FF
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
+
+🙏 Credits
+
+Made with 💻 by SoloFFcreator
+Inspired by various open-source Linux-on-Android tutorials.
+
+---
 
