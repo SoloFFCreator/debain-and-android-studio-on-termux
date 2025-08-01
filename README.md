@@ -204,3 +204,18 @@ Inspired by various open-source Linux-on-Android tutorials.
 
 
 
+
+
+
+
+
+
+
+
+---
+
+
+## If you find any error just contact in this Email infosoloaihub@gmail.com
+
+
+bye 😎 take care 
